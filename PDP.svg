@@ -1,0 +1,265 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E74C3C;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#C0392B;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="consultGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F39C12;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#E67E22;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="minimalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#95A5A6;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#7F8C8D;stop-opacity:0.8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">Product Development Lifecycle - Role Engagement by Phase</text>
+  
+  <!-- Phase Headers -->
+  <rect x="150" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="225" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">DISCOVERY</text>
+  
+  <rect x="320" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="395" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">PLANNING</text>
+  
+  <rect x="490" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="565" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">DEVELOPMENT</text>
+  
+  <rect x="660" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="735" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">LAUNCH</text>
+  
+  <rect x="830" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="905" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">GROWTH</text>
+  
+  <rect x="1000" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="1075" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">OPTIMIZATION</text>
+  
+  <rect x="1170" y="70" width="150" height="40" rx="5" fill="#4A90E2" stroke="#357ABD" stroke-width="2"/>
+  <text x="1245" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">EVOLUTION</text>
+  
+  <!-- Role Grid -->
+  <g font-family="Arial, sans-serif" font-size="11" fill="#333">
+    
+    <!-- Product Manager Row -->
+    <text x="80" y="150" font-weight="bold" text-anchor="end">Product Manager</text>
+    <rect x="150" y="135" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="225" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Market Research</text>
+    <rect x="320" y="135" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="395" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Requirements</text>
+    <rect x="490" y="135" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="565" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Coordination</text>
+    <rect x="660" y="135" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Go-to-Market</text>
+    <rect x="830" y="135" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="905" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Metrics</text>
+    <rect x="1000" y="135" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1075" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Performance</text>
+    <rect x="1170" y="135" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1245" y="152" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Strategy</text>
+    
+    <!-- Tech Lead Row -->
+    <text x="80" y="185" font-weight="bold" text-anchor="end">Tech Lead</text>
+    <rect x="150" y="170" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="225" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Feasibility</text>
+    <rect x="320" y="170" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="395" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Architecture</text>
+    <rect x="490" y="170" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="565" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Development</text>
+    <rect x="660" y="170" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="735" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Deployment</text>
+    <rect x="830" y="170" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="905" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Scaling</text>
+    <rect x="1000" y="170" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1075" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Tech Debt</text>
+    <rect x="1170" y="170" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1245" y="187" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Next Version</text>
+    
+    <!-- UX Designer Row -->
+    <text x="80" y="220" font-weight="bold" text-anchor="end">UX Designer</text>
+    <rect x="150" y="205" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="225" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - User Research</text>
+    <rect x="320" y="205" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="395" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Design System</text>
+    <rect x="490" y="205" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="565" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - UI Polish</text>
+    <rect x="660" y="205" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="735" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - User Flow</text>
+    <rect x="830" y="205" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="905" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - UX Metrics</text>
+    <rect x="1000" y="205" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1075" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - A/B Testing</text>
+    <rect x="1170" y="205" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1245" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Redesign</text>
+    
+    <!-- Developers Row -->
+    <text x="80" y="255" font-weight="bold" text-anchor="end">Developers</text>
+    <rect x="150" y="240" width="150" height="25" rx="3" fill="url(#minimalGrad)"/>
+    <text x="225" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">MINIMAL</text>
+    <rect x="320" y="240" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="395" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Estimation</text>
+    <rect x="490" y="240" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="565" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Implementation</text>
+    <rect x="660" y="240" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="735" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Bug Fixes</text>
+    <rect x="830" y="240" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="905" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Features</text>
+    <rect x="1000" y="240" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1075" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Optimization</text>
+    <rect x="1170" y="240" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1245" y="257" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Refactor</text>
+    
+    <!-- QA Engineer Row -->
+    <text x="80" y="290" font-weight="bold" text-anchor="end">QA Engineer</text>
+    <rect x="150" y="275" width="150" height="25" rx="3" fill="url(#minimalGrad)"/>
+    <text x="225" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">MINIMAL</text>
+    <rect x="320" y="275" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="395" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Test Plan</text>
+    <rect x="490" y="275" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="565" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Testing</text>
+    <rect x="660" y="275" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Release QA</text>
+    <rect x="830" y="275" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="905" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Monitoring</text>
+    <rect x="1000" y="275" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1075" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Automation</text>
+    <rect x="1170" y="275" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1245" y="292" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Standards</text>
+    
+    <!-- Marketing Row -->
+    <text x="80" y="325" font-weight="bold" text-anchor="end">Marketing</text>
+    <rect x="150" y="310" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="225" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Research</text>
+    <rect x="320" y="310" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="395" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Messaging</text>
+    <rect x="490" y="310" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="565" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Beta Plan</text>
+    <rect x="660" y="310" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Campaign</text>
+    <rect x="830" y="310" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="905" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Acquisition</text>
+    <rect x="1000" y="310" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1075" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Retention</text>
+    <rect x="1170" y="310" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1245" y="327" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Positioning</text>
+    
+    <!-- Sales Row -->
+    <text x="80" y="360" font-weight="bold" text-anchor="end">Sales</text>
+    <rect x="150" y="345" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="225" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Pricing</text>
+    <rect x="320" y="345" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="395" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Features</text>
+    <rect x="490" y="345" width="150" height="25" rx="3" fill="url(#minimalGrad)"/>
+    <text x="565" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">MINIMAL</text>
+    <rect x="660" y="345" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Sales Enable</text>
+    <rect x="830" y="345" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="905" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Revenue</text>
+    <rect x="1000" y="345" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1075" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Upsell</text>
+    <rect x="1170" y="345" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1245" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Migration</text>
+    
+    <!-- Data & Analytics Row -->
+    <text x="80" y="395" font-weight="bold" text-anchor="end">Data & Analytics</text>
+    <rect x="150" y="380" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="225" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - User Research</text>
+    <rect x="320" y="380" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="395" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Metrics</text>
+    <rect x="490" y="380" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="565" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Tracking</text>
+    <rect x="660" y="380" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="735" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Analytics</text>
+    <rect x="830" y="380" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="905" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Growth Analysis</text>
+    <rect x="1000" y="380" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1075" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Performance</text>
+    <rect x="1170" y="380" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1245" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Data Strategy</text>
+    
+    <!-- Infrastructure Row -->
+    <text x="80" y="430" font-weight="bold" text-anchor="end">Infrastructure</text>
+    <rect x="150" y="415" width="150" height="25" rx="3" fill="url(#minimalGrad)"/>
+    <text x="225" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">MINIMAL</text>
+    <rect x="320" y="415" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="395" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Platform</text>
+    <rect x="490" y="415" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="565" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - DevOps</text>
+    <rect x="660" y="415" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Deployment</text>
+    <rect x="830" y="415" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="905" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Scaling</text>
+    <rect x="1000" y="415" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1075" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Optimization</text>
+    <rect x="1170" y="415" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1245" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Migration</text>
+    
+    <!-- Legal & Compliance Row -->
+    <text x="80" y="465" font-weight="bold" text-anchor="end">Legal & Compliance</text>
+    <rect x="150" y="450" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="225" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Privacy</text>
+    <rect x="320" y="450" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="395" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Compliance</text>
+    <rect x="490" y="450" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="565" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Security</text>
+    <rect x="660" y="450" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="735" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Legal Review</text>
+    <rect x="830" y="450" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="905" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Risk</text>
+    <rect x="1000" y="450" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="1075" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Audit</text>
+    <rect x="1170" y="450" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="1245" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Policy</text>
+    
+    <!-- Finance Row -->
+    <text x="80" y="500" font-weight="bold" text-anchor="end">Finance</text>
+    <rect x="150" y="485" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="225" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Business Case</text>
+    <rect x="320" y="485" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="395" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Budget</text>
+    <rect x="490" y="485" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
+    <text x="565" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Costs</text>
+    <rect x="660" y="485" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="735" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - P&amp;L</text>
+    <rect x="830" y="485" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
+    <text x="905" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Revenue</text>
+    <rect x="1000" y="485" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1075" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - ROI Analysis</text>
+    <rect x="1170" y="485" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
+    <text x="1245" y="502" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - Investment</text>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="100" y="550" width="1200" height="120" fill="#F8F9FA" stroke="#E9ECEF" stroke-width="2" rx="10"/>
+  <text x="700" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">Role Engagement Legend</text>
+  
+  <rect x="150" y="600" width="100" height="25" rx="3" fill="url(#leadGrad)"/>
+  <text x="200" y="617" text-anchor="middle" font-size="12" font-weight="bold" fill="white">LEAD</text>
+  <text x="260" y="617" font-family="Arial, sans-serif" font-size="11" fill="#333">Primary responsibility, decision maker, accountable for outcomes</text>
+  
+  <rect x="550" y="600" width="100" height="25" rx="3" fill="url(#supportGrad)"/>
+  <text x="600" y="617" text-anchor="middle" font-size="12" font-weight="bold" fill="white">SUPPORT</text>
+  <text x="660" y="617" font-family="Arial, sans-serif" font-size="11" fill="#333">Active contributor, executes work, regular involvement</text>
+  
+  <rect x="150" y="640" width="100" height="25" rx="3" fill="url(#consultGrad)"/>
+  <text x="200" y="657" text-anchor="middle" font-size="12" font-weight="bold" fill="white">CONSULT</text>
+  <text x="260" y="657" font-family="Arial, sans-serif" font-size="11" fill="#333">Subject matter expert, provides input when needed</text>
+  
+  <rect x="550" y="640" width="100" height="25" rx="3" fill="url(#minimalGrad)"/>
+  <text x="600" y="657" text-anchor="middle" font-size="12" font-weight="bold" fill="white">MINIMAL</text>
+  <text x="660" y="657" font-family="Arial, sans-serif" font-size="11" fill="#333">Limited or no involvement in this phase</text>
+  
+  <!-- Key Principles -->
+  <rect x="200" y="720" width="1000" height="120" fill="#ffffff" stroke="#BDC3C7" stroke-width="1" rx="5"/>
+  <text x="210" y="745" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Key Principles for Role Management:</text>
+  <text x="210" y="770" font-family="Arial, sans-serif" font-size="11" fill="#333">1. Each phase must have a clearly designated LEAD role - shared leadership creates confusion and delays</text>
+  <text x="210" y="785" font-family="Arial, sans-serif" font-size="11" fill="#333">2. SUPPORT roles are active participants, not just advisors - they have deliverables and deadlines</text>
+  <text x="210" y="800" font-family="Arial, sans-serif" font-size="11" fill="#333">3. CONSULT roles provide expertise on-demand but aren't in daily standups or sprint planning</text>
+  <text x="210" y="815" font-family="Arial, sans-serif" font-size="11" fill="#333">4. Role transitions between phases require formal handoffs - don't assume the next lead knows everything</text>
+  <text x="210" y="830" font-family="Arial, sans-serif" font-size="11" fill="#333">5. MINIMAL doesn't mean uninformed - keep these roles updated on decisions that affect their future work</text>
+</svg>

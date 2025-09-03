@@ -1,0 +1,122 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <linearGradient id="phaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">Product Development Lifecycle</text>
+  
+  <!-- Phase 1: Discovery & Strategy -->
+  <rect x="50" y="80" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="140" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">DISCOVERY &amp;</text>
+  <text x="140" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">STRATEGY</text>
+  <text x="140" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Market Research</text>
+  <text x="140" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• User Needs</text>
+  <text x="140" y="161" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Business Case</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 230 130 L 280 130" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 2: Planning & Design -->
+  <rect x="290" y="80" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="380" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">PLANNING &amp;</text>
+  <text x="380" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">DESIGN</text>
+  <text x="380" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Requirements</text>
+  <text x="380" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Architecture</text>
+  <text x="380" y="161" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Prototypes</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 470 130 L 520 130" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 3: Development -->
+  <rect x="530" y="80" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="620" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">DEVELOPMENT</text>
+  <text x="620" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Build MVP</text>
+  <text x="620" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Iterate</text>
+  <text x="620" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Quality Assurance</text>
+  <text x="620" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Testing</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 710 130 L 760 130" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 4: Launch -->
+  <rect x="770" y="80" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="860" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">LAUNCH</text>
+  <text x="860" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Go-to-Market</text>
+  <text x="860" y="138" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Release</text>
+  <text x="860" y="151" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Marketing</text>
+  <text x="860" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Sales Enablement</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 860 180 L 860 220" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 5: Growth & Scale -->
+  <rect x="770" y="230" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="860" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">GROWTH &amp;</text>
+  <text x="860" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">SCALE</text>
+  <text x="860" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• User Acquisition</text>
+  <text x="860" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Feature Expansion</text>
+  <text x="860" y="311" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Market Expansion</text>
+  
+  <!-- Arrow 5 -->
+  <path d="M 770 280 L 720 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 6: Optimization -->
+  <rect x="530" y="230" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="620" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">OPTIMIZATION</text>
+  <text x="620" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Analytics</text>
+  <text x="620" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Performance Tuning</text>
+  <text x="620" y="301" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Cost Management</text>
+  <text x="620" y="314" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Process Improvement</text>
+  
+  <!-- Arrow 6 -->
+  <path d="M 530 280 L 480 280" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Phase 7: Evolution/Sunset -->
+  <rect x="290" y="230" width="180" height="100" rx="10" fill="url(#phaseGrad)" stroke="#2E5C8A" stroke-width="2"/>
+  <text x="380" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">EVOLUTION /</text>
+  <text x="380" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">SUNSET</text>
+  <text x="380" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Next Version</text>
+  <text x="380" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Pivot</text>
+  <text x="380" y="311" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• End-of-Life</text>
+  
+  <!-- Decision Diamond -->
+  <polygon points="140,380 190,405 140,430 90,405" fill="#FFB347" stroke="#E67E22" stroke-width="2"/>
+  <text x="140" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333">Continue?</text>
+  
+  <!-- Feedback loops -->
+  <path d="M 380 330 L 380 370 L 160 370" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="270" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Continuous Feedback Loop</text>
+  
+  <!-- Back to Discovery arrow -->
+  <path d="M 90 405 L 50 405 L 50 350 L 140 350 L 140 180" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="25" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666" transform="rotate(-90, 25, 380)">New Iteration</text>
+  
+  <!-- Gate Reviews -->
+  <circle cx="255" cy="130" r="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="255" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">G1</text>
+  
+  <circle cx="495" cy="130" r="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="495" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">G2</text>
+  
+  <circle cx="735" cy="130" r="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="735" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white">G3</text>
+  
+  <!-- Legend -->
+  <rect x="50" y="500" width="300" height="120" fill="#F8F9FA" stroke="#E9ECEF" stroke-width="1" rx="5"/>
+  <text x="60" y="520" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Legend:</text>
+  <rect x="60" y="530" width="20" height="15" fill="url(#phaseGrad)"/>
+  <text x="90" y="542" font-family="Arial, sans-serif" font-size="12" fill="#333">Development Phase</text>
+  <circle cx="70" cy="555" r="6" fill="#E74C3C"/>
+  <text x="90" y="560" font-family="Arial, sans-serif" font-size="12" fill="#333">Gate Review (Go/No-Go Decision)</text>
+  <path d="M 60 575 L 80 575" stroke="#666" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="90" y="579" font-family="Arial, sans-serif" font-size="12" fill="#333">Feedback Loop</text>
+  <polygon points="65,590 75,595 65,600 60,595" fill="#FFB347"/>
+  <text x="90" y="598" font-family="Arial, sans-serif" font-size="12" fill="#333">Decision Point</text>
+</svg>

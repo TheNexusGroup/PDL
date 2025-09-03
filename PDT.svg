@@ -1,0 +1,149 @@
+<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="execGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B59B6;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#8E44AD;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="700" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">Product Development Team Structure</text>
+  
+  <!-- Executive Layer -->
+  <rect x="580" y="60" width="240" height="80" rx="10" fill="url(#execGrad)" stroke="#7D3C98" stroke-width="2"/>
+  <text x="700" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">EXECUTIVE SPONSORS</text>
+  <text x="640" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">CEO/CPO</text>
+  <text x="760" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">CTO/VP Eng</text>
+  <text x="700" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Strategic Direction | Resource Allocation</text>
+  
+  <!-- Core Team (Center) -->
+  <ellipse cx="700" cy="280" rx="200" ry="120" fill="url(#coreGrad)" stroke="#229954" stroke-width="3"/>
+  <text x="700" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">CORE PRODUCT TEAM</text>
+  
+  <!-- Product Manager -->
+  <rect x="630" y="240" width="140" height="40" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="700" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27AE60">Product Manager</text>
+  <text x="700" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27AE60">Vision • Roadmap • Prioritization</text>
+  
+  <!-- Tech Lead -->
+  <rect x="630" y="290" width="65" height="35" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="662" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#27AE60">Tech Lead</text>
+  <text x="662" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27AE60">Architecture</text>
+  
+  <!-- UX Designer -->
+  <rect x="705" y="290" width="65" height="35" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="737" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#27AE60">UX Designer</text>
+  <text x="737" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27AE60">User Experience</text>
+  
+  <!-- Developers -->
+  <rect x="560" y="335" width="80" height="30" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="600" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">Developers</text>
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27AE60">(2-8 members)</text>
+  
+  <!-- QA Engineer -->
+  <rect x="650" y="335" width="70" height="30" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="685" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">QA Engineer</text>
+  <text x="685" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27AE60">Quality</text>
+  
+  <!-- Scrum Master -->
+  <rect x="730" y="335" width="80" height="30" rx="5" fill="#ffffff" stroke="#27AE60" stroke-width="2"/>
+  <text x="770" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#27AE60">Scrum Master</text>
+  <text x="770" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#27AE60">Process</text>
+  
+  <!-- Support Teams -->
+  
+  <!-- Marketing -->
+  <rect x="50" y="180" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="120" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">MARKETING</text>
+  <text x="120" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Product Marketing</text>
+  <text x="120" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Growth Marketing</text>
+  <text x="120" y="246" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Content Strategy</text>
+  
+  <!-- Sales -->
+  <rect x="50" y="270" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="120" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">SALES</text>
+  <text x="120" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Sales Engineering</text>
+  <text x="120" y="323" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Account Management</text>
+  <text x="120" y="336" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Customer Success</text>
+  
+  <!-- Data & Analytics -->
+  <rect x="50" y="360" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="120" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">DATA &amp; ANALYTICS</text>
+  <text x="120" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Data Scientists</text>
+  <text x="120" y="413" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Business Analysts</text>
+  <text x="120" y="426" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• User Researchers</text>
+  
+  <!-- Infrastructure -->
+  <rect x="1210" y="180" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="1280" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">INFRASTRUCTURE</text>
+  <text x="1280" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• DevOps Engineers</text>
+  <text x="1280" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Site Reliability</text>
+  <text x="1280" y="246" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Security</text>
+  
+  <!-- Legal & Compliance -->
+  <rect x="1210" y="270" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="1280" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">LEGAL &amp;</text>
+  <text x="1280" y="308" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">COMPLIANCE</text>
+  <text x="1280" y="323" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Privacy</text>
+  <text x="1280" y="336" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Regulatory</text>
+  
+  <!-- Finance -->
+  <rect x="1210" y="360" width="140" height="70" rx="10" fill="url(#supportGrad)" stroke="#2471A3" stroke-width="2"/>
+  <text x="1280" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">FINANCE</text>
+  <text x="1280" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Financial Planning</text>
+  <text x="1280" y="413" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Business Operations</text>
+  <text x="1280" y="426" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">• Procurement</text>
+  
+  <!-- Connections from Executive to Core -->
+  <path d="M 700 140 L 700 160" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Connections from Support Teams to Core -->
+  <path d="M 190 215 L 500 250" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 190 305 L 500 290" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 190 395 L 500 320" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1210 215 L 900 250" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1210 305 L 900 290" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1210 395 L 900 320" stroke="#666" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Team Size Guidelines -->
+  <rect x="300" y="480" width="800" height="180" fill="#F8F9FA" stroke="#E9ECEF" stroke-width="2" rx="10"/>
+  <text x="700" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">Team Scaling Guidelines</text>
+  
+  <!-- Early Stage -->
+  <rect x="320" y="530" width="220" height="110" fill="#E8F5E8" stroke="#27AE60" stroke-width="2" rx="8"/>
+  <text x="430" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27AE60">EARLY STAGE (MVP)</text>
+  <text x="430" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Core Team: 3-5 people</text>
+  <text x="330" y="590" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1 Product Manager</text>
+  <text x="330" y="605" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1 Tech Lead (full-stack)</text>
+  <text x="330" y="620" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1-2 Developers</text>
+  <text x="330" y="635" font-family="Arial, sans-serif" font-size="10" fill="#333">• Part-time UX Designer</text>
+  
+  <!-- Growth Stage -->
+  <rect x="590" y="530" width="220" height="110" fill="#FFF4E6" stroke="#F39C12" stroke-width="2" rx="8"/>
+  <text x="700" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#F39C12">GROWTH STAGE</text>
+  <text x="700" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Core Team: 6-10 people</text>
+  <text x="600" y="590" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1-2 Product Managers</text>
+  <text x="600" y="605" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1 Tech Lead + 3-5 Developers</text>
+  <text x="600" y="620" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1 UX Designer + 1 QA</text>
+  <text x="600" y="635" font-family="Arial, sans-serif" font-size="10" fill="#333">• 1 Scrum Master</text>
+  
+  <!-- Scale Stage -->
+  <rect x="860" y="530" width="220" height="110" fill="#FFE8E8" stroke="#E74C3C" stroke-width="2" rx="8"/>
+  <text x="970" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E74C3C">SCALE STAGE</text>
+  <text x="970" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Multiple Teams: 15-50 people</text>
+  <text x="870" y="590" font-family="Arial, sans-serif" font-size="10" fill="#333">• Squad-based structure</text>
+  <text x="870" y="605" font-family="Arial, sans-serif" font-size="10" fill="#333">• Specialized roles emerge</text>
+  <text x="870" y="620" font-family="Arial, sans-serif" font-size="10" fill="#333">• Platform & infrastructure teams</text>
+  <text x="870" y="635" font-family="Arial, sans-serif" font-size="10" fill="#333">• Dedicated support functions</text>
+</svg>

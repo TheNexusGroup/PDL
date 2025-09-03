@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Development Lifecycle (PDL) Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .tabs {
+            display: flex;
+            background-color: white;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+        }
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            background-color: #ecf0f1;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: #7f8c8d;
+        }
+        .tab:first-child {
+            border-radius: 10px 0 0 0;
+        }
+        .tab:last-child {
+            border-radius: 0 10px 0 0;
+        }
+        .tab.active {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .tab:hover:not(.active) {
+            background-color: #bdc3c7;
+        }
+        .content {
+            background-color: white;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            min-height: 600px;
+        }
+        .diagram-container {
+            text-align: center;
+            display: none;
+        }
+        .diagram-container.active {
+            display: block;
+        }
+        .diagram-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .diagram-description {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .editor-viewport {
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            background-color: #fafafa;
+            overflow: hidden;
+            position: relative;
+            min-height: 600px;
+            background-image: 
+                radial-gradient(circle, #ddd 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .viewport-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+            background: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .viewport-controls button {
+            margin: 2px;
+            padding: 5px 10px;
+            border: none;
+            background: #3498db;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .viewport-controls button:hover {
+            background: #2980b9;
+        }
+        .svg-container {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            cursor: grab;
+        }
+        .svg-container:active {
+            cursor: grabbing;
+        }
+        .svg-container svg {
+            max-width: none;
+            height: auto;
+            display: block;
+            transform-origin: 0 0;
+            transition: transform 0.1s ease;
+        }
+        .diagram-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn.export {
+            background-color: #27ae60;
+        }
+        .btn.export:hover {
+            background-color: #229954;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.info {
+            background-color: #cce7ff;
+            color: #004085;
+            border: 1px solid #99d3ff;
+        }
+        .interactive-element {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .interactive-element:hover {
+            opacity: 0.7;
+        }
+        .selected {
+            stroke: #e74c3c !important;
+            stroke-width: 3px !important;
+        }
+        .phase-dashboard {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+        .dashboard-header {
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-content {
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .phase-status {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border-left: 4px solid #bdc3c7;
+        }
+        .phase-status.active {
+            border-left-color: #e74c3c;
+            background-color: #ffeaea;
+        }
+        .phase-status.completed {
+            border-left-color: #27ae60;
+            background-color: #eafaf1;
+        }
+        .log-dashboard {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 600px;
+            height: 300px;
+            background: white;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+        .log-search {
+            padding: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .log-search input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+        .log-content {
+            padding: 10px;
+            height: 220px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 5px;
+            border-left: 3px solid #3498db;
+            background: #f8f9fa;
+        }
+        .log-entry.discovery { border-left-color: #f39c12; }
+        .log-entry.phase_transition { border-left-color: #e74c3c; }
+        .log-entry.agent_assigned { border-left-color: #9b59b6; }
+        .dashboard-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1001;
+        }
+        .dashboard-toggle button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Development Lifecycle (PDL) Framework</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showDiagram('pdl')">PDL Lifecycle</button>
+            <button class="tab" onclick="showDiagram('pdt')">Team Structure</button>
+            <button class="tab" onclick="showDiagram('pdp')">Role Engagement</button>
+        </div>
+        
+        <div class="content">
+            <div id="pdl" class="diagram-container active">
+                <h2 class="diagram-title">Product Development Lifecycle</h2>
+                <p class="diagram-description">
+                    Complete workflow from research to deployment, showing phase transitions and decision points.
+                </p>
+                <div class="editor-viewport">
+                    <div class="viewport-controls">
+                        <button onclick="zoomIn('pdl')">Zoom In</button>
+                        <button onclick="zoomOut('pdl')">Zoom Out</button>
+                        <button onclick="resetZoom('pdl')">Reset</button>
+                        <button onclick="fitToView('pdl')">Fit</button>
+                    </div>
+                    <div class="svg-container" id="pdl-container">
+                        <div id="pdl-svg-content">Loading PDL diagram...</div>
+                    </div>
+                </div>
+                <div class="diagram-info">
+                    <strong>Key Features:</strong> Phase gates, feedback loops, parallel execution paths, and quality checkpoints.
+                </div>
+                <div class="controls">
+                    <button class="btn export" onclick="exportToJSON('pdl')">Export PDL Flow</button>
+                    <div id="pdl-status" class="status"></div>
+                </div>
+            </div>
+            
+            <div id="pdt" class="diagram-container">
+                <h2 class="diagram-title">Product Development Team Structure</h2>
+                <p class="diagram-description">
+                    Agent roles, responsibilities, and coordination hierarchy for efficient project execution.
+                </p>
+                <div class="editor-viewport">
+                    <div class="viewport-controls">
+                        <button onclick="zoomIn('pdt')">Zoom In</button>
+                        <button onclick="zoomOut('pdt')">Zoom Out</button>
+                        <button onclick="resetZoom('pdt')">Reset</button>
+                        <button onclick="fitToView('pdt')">Fit</button>
+                    </div>
+                    <div class="svg-container" id="pdt-container">
+                        <div id="pdt-svg-content">Loading PDT diagram...</div>
+                    </div>
+                </div>
+                <div class="diagram-info">
+                    <strong>Key Features:</strong> Agent specialization, communication flows, and escalation paths.
+                </div>
+                <div class="controls">
+                    <button class="btn export" onclick="exportToJSON('pdt')">Export Team Structure</button>
+                    <div id="pdt-status" class="status"></div>
+                </div>
+            </div>
+            
+            <div id="pdp" class="diagram-container">
+                <h2 class="diagram-title">Role Engagement Matrix</h2>
+                <p class="diagram-description">
+                    When and how different agents engage throughout the development lifecycle phases.
+                </p>
+                <div class="editor-viewport">
+                    <div class="viewport-controls">
+                        <button onclick="zoomIn('pdp')">Zoom In</button>
+                        <button onclick="zoomOut('pdp')">Zoom Out</button>
+                        <button onclick="resetZoom('pdp')">Reset</button>
+                        <button onclick="fitToView('pdp')">Fit</button>
+                    </div>
+                    <div class="svg-container" id="pdp-container">
+                        <div id="pdp-svg-content">Loading PDP diagram...</div>
+                    </div>
+                </div>
+                <div class="diagram-info">
+                    <strong>Key Features:</strong> Phase-specific agent activation, collaboration patterns, and handoff procedures.
+                </div>
+                <div class="controls">
+                    <button class="btn export" onclick="exportToJSON('pdp')">Export Role Matrix</button>
+                    <div id="pdp-status" class="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Toggle Buttons -->
+    <div class="dashboard-toggle">
+        <button onclick="togglePhaseDashboard()">Phase Status</button>
+        <button onclick="toggleLogDashboard()">Event Logs</button>
+    </div>
+
+    <!-- Phase Status Dashboard -->
+    <div id="phase-dashboard" class="phase-dashboard">
+        <div class="dashboard-header">
+            <h3>Phase Status</h3>
+            <button onclick="togglePhaseDashboard()" style="background:none;border:none;color:white;cursor:pointer;">✕</button>
+        </div>
+        <div class="dashboard-content">
+            <div id="phase-status-content">
+                <div class="phase-status" data-phase="discovery">
+                    <strong>Discovery & Strategy</strong>
+                    <div>Status: Pending</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="planning">
+                    <strong>Planning & Design</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="development">
+                    <strong>Development</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="launch">
+                    <strong>Launch</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="growth">
+                    <strong>Growth & Scale</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="optimization">
+                    <strong>Optimization</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+                <div class="phase-status" data-phase="evolution">
+                    <strong>Evolution/Sunset</strong>
+                    <div>Status: Not Started</div>
+                    <div>Progress: 0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Dashboard -->
+    <div id="log-dashboard" class="log-dashboard">
+        <div class="dashboard-header">
+            <h3>Event Logs</h3>
+            <button onclick="toggleLogDashboard()" style="background:none;border:none;color:white;cursor:pointer;">✕</button>
+        </div>
+        <div class="log-search">
+            <input type="text" id="log-search-input" placeholder="Search logs..." onkeyup="filterLogs()">
+        </div>
+        <div class="log-content" id="log-content">
+            <div class="log-entry system">
+                <strong>[System]</strong> PDL Framework initialized
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Global state
+        let selectedElements = {};
+        let zoomLevels = { pdl: 1, pdt: 1, pdp: 1 };
+        let panPositions = { pdl: { x: 0, y: 0 }, pdt: { x: 0, y: 0 }, pdp: { x: 0, y: 0 } };
+        
+        function showDiagram(diagramId) {
+            // Hide all diagrams
+            const containers = document.querySelectorAll('.diagram-container');
+            containers.forEach(container => container.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected diagram
+            document.getElementById(diagramId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+
+        function showStatus(diagramId, message, type = 'info') {
+            const status = document.getElementById(`${diagramId}-status`);
+            status.className = `status ${type}`;
+            status.textContent = message;
+            status.style.display = 'block';
+            
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+
+        // We'll load SVG content directly from the original files to avoid CORS issues
+        // This approach embeds the complete original diagrams dynamically
+
+        // Load SVG content using object element as fallback to iframe approach
+        function loadSVG(diagramId) {
+            try {
+                const container = document.getElementById(`${diagramId}-svg-content`);
+                
+                // Create object element to load SVG
+                const objectElement = document.createElement('object');
+                objectElement.data = `${diagramId.toUpperCase()}.svg`;
+                objectElement.type = 'image/svg+xml';
+                objectElement.style.width = '100%';
+                objectElement.style.height = 'auto';
+                
+                // Handle load event
+                objectElement.addEventListener('load', function() {
+                    try {
+                        const svgDoc = this.contentDocument;
+                        if (svgDoc) {
+                            const svgElement = svgDoc.querySelector('svg');
+                            if (svgElement) {
+                                // Clone the SVG and insert directly into DOM for interactivity
+                                const clonedSVG = svgElement.cloneNode(true);
+                                container.innerHTML = '';
+                                container.appendChild(clonedSVG);
+                                
+                                makeElementsInteractive(clonedSVG, diagramId);
+                                showStatus(diagramId, 'SVG loaded and interactive', 'success');
+                                return;
+                            }
+                        }
+                        // Fallback: keep object element if cloning fails
+                        container.innerHTML = '';
+                        container.appendChild(objectElement);
+                        showStatus(diagramId, 'SVG loaded (limited interactivity)', 'info');
+                    } catch (error) {
+                        console.error('Error making SVG interactive:', error);
+                        showStatus(diagramId, 'SVG loaded but not interactive', 'info');
+                    }
+                });
+                
+                // Handle error
+                objectElement.addEventListener('error', function() {
+                    container.innerHTML = `<p style="color: #e74c3c; padding: 20px;">Error loading ${diagramId.toUpperCase()}.svg</p>`;
+                    showStatus(diagramId, 'Failed to load SVG', 'error');
+                });
+                
+                // Set initial content
+                container.innerHTML = `<p style="padding: 20px;">Loading ${diagramId.toUpperCase()}.svg...</p>`;
+                container.appendChild(objectElement);
+                
+            } catch (error) {
+                console.error('Error loading SVG:', error);
+                document.getElementById(`${diagramId}-svg-content`).innerHTML = 
+                    `<p style="color: #e74c3c; padding: 20px;">Error loading ${diagramId.toUpperCase()}.svg</p>`;
+            }
+        }
+
+        function makeElementsInteractive(svgElement, diagramId) {
+            // Select clickable elements based on diagram type with fixed string parsing
+            let selectableElements = [];
+            
+            if (diagramId === 'pdl') {
+                // PDL: phases, arrows, decision points with proper attribute checks
+                const phases = Array.from(svgElement.querySelectorAll('rect')).filter(el => 
+                    el.getAttribute('fill') && el.getAttribute('fill').includes('phaseGrad'));
+                const arrows = Array.from(svgElement.querySelectorAll('path')).filter(el => 
+                    el.getAttribute('marker-end') && el.getAttribute('marker-end').includes('arrowhead'));
+                const decisions = svgElement.querySelectorAll('polygon[fill="#FFB347"]');
+                const gates = svgElement.querySelectorAll('circle[fill="#E74C3C"]');
+                
+                selectableElements = [...phases, ...arrows, ...decisions, ...gates];
+            } else if (diagramId === 'pdt') {
+                // PDT: team boxes, connections with proper attribute checks
+                const teamBoxes = Array.from(svgElement.querySelectorAll('rect')).filter(el => 
+                    el.getAttribute('fill') && el.getAttribute('fill').includes('Grad'));
+                const ellipses = Array.from(svgElement.querySelectorAll('ellipse')).filter(el => 
+                    el.getAttribute('fill') && el.getAttribute('fill').includes('Grad'));
+                const connections = Array.from(svgElement.querySelectorAll('path')).filter(el => 
+                    el.getAttribute('marker-end') && el.getAttribute('marker-end').includes('arrow'));
+                
+                selectableElements = [...teamBoxes, ...ellipses, ...connections];
+            } else if (diagramId === 'pdp') {
+                // PDP: role engagement boxes with proper attribute checks
+                selectableElements = Array.from(svgElement.querySelectorAll('rect')).filter(el => 
+                    el.getAttribute('fill') && el.getAttribute('fill').includes('Grad'));
+            }
+
+            selectedElements[diagramId] = new Set();
+
+            selectableElements.forEach((element, index) => {
+                element.classList.add('interactive-element');
+                element.dataset.elementId = `${diagramId}-${index}`;
+                element.dataset.originalStroke = element.getAttribute('stroke') || 'none';
+                element.dataset.originalStrokeWidth = element.getAttribute('stroke-width') || '1';
+                element.dataset.originalFill = element.getAttribute('fill') || '';
+                
+                // Add hover effects
+                element.style.cursor = 'pointer';
+                element.addEventListener('mouseenter', function() {
+                    if (!element.classList.contains('selected')) {
+                        element.style.opacity = '0.8';
+                    }
+                });
+                element.addEventListener('mouseleave', function() {
+                    if (!element.classList.contains('selected')) {
+                        element.style.opacity = '1';
+                    }
+                });
+                
+                element.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleElementSelection(element, diagramId);
+                    
+                    // Emit event to PDL framework
+                    if (window.pdl) {
+                        const elementInfo = getElementInfo(element, diagramId);
+                        window.pdl.emit('element_selected', {
+                            diagram: diagramId,
+                            element: elementInfo,
+                            selected: element.classList.contains('selected')
+                        }, {
+                            brief: `Selected: ${elementInfo.type} in ${diagramId}`,
+                            references: [`${diagramId}:${element.dataset.elementId}`]
+                        });
+                    }
+                });
+            });
+
+            console.log(`Made ${selectableElements.length} elements interactive for ${diagramId}`);
+        }
+
+        function getElementInfo(element, diagramId) {
+            const tagName = element.tagName.toLowerCase();
+            let type = tagName;
+            let name = '';
+            
+            // Try to get descriptive name from nearby text elements
+            const svgElement = element.closest('svg');
+            const elementRect = element.getBoundingClientRect();
+            const texts = svgElement.querySelectorAll('text');
+            
+            texts.forEach(text => {
+                const textRect = text.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(textRect.x - elementRect.x, 2) + 
+                    Math.pow(textRect.y - elementRect.y, 2)
+                );
+                if (distance < 100 && text.textContent.trim()) {
+                    name = text.textContent.trim();
+                }
+            });
+            
+            return { type, name, tagName };
+        }
+
+        function toggleElementSelection(element, diagramId) {
+            const elementId = element.dataset.elementId;
+            
+            if (selectedElements[diagramId].has(elementId)) {
+                selectedElements[diagramId].delete(elementId);
+                element.classList.remove('selected');
+                // Restore original stroke
+                element.setAttribute('stroke', element.dataset.originalStroke);
+                element.setAttribute('stroke-width', element.dataset.originalStrokeWidth);
+            } else {
+                selectedElements[diagramId].add(elementId);
+                element.classList.add('selected');
+                // Apply selection style
+                element.setAttribute('stroke', '#e74c3c');
+                element.setAttribute('stroke-width', '3');
+            }
+            
+            showStatus(diagramId, `${selectedElements[diagramId].size} elements selected`, 'info');
+        }
+
+        // Zoom and pan functions
+        function zoomIn(diagramId) {
+            zoomLevels[diagramId] *= 1.2;
+            updateTransform(diagramId);
+        }
+
+        function zoomOut(diagramId) {
+            zoomLevels[diagramId] /= 1.2;
+            updateTransform(diagramId);
+        }
+
+        function resetZoom(diagramId) {
+            zoomLevels[diagramId] = 1;
+            panPositions[diagramId] = { x: 0, y: 0 };
+            updateTransform(diagramId);
+        }
+
+        function fitToView(diagramId) {
+            const container = document.getElementById(`${diagramId}-container`);
+            const svg = container.querySelector('svg');
+            if (!svg) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+            
+            const scaleX = containerRect.width / svgRect.width;
+            const scaleY = containerRect.height / svgRect.height;
+            zoomLevels[diagramId] = Math.min(scaleX, scaleY) * 0.9;
+            
+            panPositions[diagramId] = { x: 0, y: 0 };
+            updateTransform(diagramId);
+        }
+
+        function updateTransform(diagramId) {
+            const svg = document.querySelector(`#${diagramId}-container svg`);
+            if (svg) {
+                svg.style.transform = `scale(${zoomLevels[diagramId]}) translate(${panPositions[diagramId].x}px, ${panPositions[diagramId].y}px)`;
+            }
+        }
+
+        function parseSVGToUMLFlow(diagramId) {
+            const svgElement = document.querySelector(`#${diagramId}-svg-content svg`);
+            if (!svgElement) return null;
+
+            if (diagramId === 'pdl') {
+                return parsePDLFlow(svgElement);
+            } else if (diagramId === 'pdt') {
+                return parsePDTStructure(svgElement);
+            } else if (diagramId === 'pdp') {
+                return parsePDPMatrix(svgElement);
+            }
+            return null;
+        }
+
+        function parsePDLFlow(svgElement) {
+            const phases = [];
+            const connections = [];
+            
+            // Extract phase rectangles
+            const phaseRects = svgElement.querySelectorAll('rect[fill*="phaseGrad"]');
+            phaseRects.forEach((rect, index) => {
+                const textElements = svgElement.querySelectorAll('text');
+                let phaseTitle = `Phase ${index + 1}`;
+                let phaseDetails = [];
+                
+                // Find associated text near this rectangle
+                const rectX = parseFloat(rect.getAttribute('x'));
+                const rectY = parseFloat(rect.getAttribute('y'));
+                
+                textElements.forEach(text => {
+                    const textX = parseFloat(text.getAttribute('x'));
+                    const textY = parseFloat(text.getAttribute('y'));
+                    
+                    if (Math.abs(textX - (rectX + 90)) < 100 && 
+                        Math.abs(textY - (rectY + 60)) < 80) {
+                        const content = text.textContent.trim();
+                        if (content && !content.startsWith('•')) {
+                            phaseTitle = content;
+                        } else if (content.startsWith('•')) {
+                            phaseDetails.push(content.substring(1).trim());
+                        }
+                    }
+                });
+                
+                phases.push({
+                    id: `phase-${index}`,
+                    type: 'phase',
+                    title: phaseTitle,
+                    details: phaseDetails,
+                    position: { x: rectX, y: rectY },
+                    dimensions: { 
+                        width: parseFloat(rect.getAttribute('width')), 
+                        height: parseFloat(rect.getAttribute('height'))
+                    }
+                });
+            });
+
+            // Extract arrows (connections)
+            const arrows = svgElement.querySelectorAll('path[marker-end*="arrowhead"]');
+            arrows.forEach((arrow, index) => {
+                connections.push({
+                    id: `connection-${index}`,
+                    type: 'flow',
+                    path: arrow.getAttribute('d'),
+                    style: arrow.getAttribute('stroke-dasharray') ? 'feedback' : 'forward'
+                });
+            });
+
+            return {
+                type: 'pdl',
+                nodes: phases,
+                connections: connections,
+                metadata: {
+                    title: 'Product Development Lifecycle',
+                    exportedAt: new Date().toISOString(),
+                    phases: phases.length,
+                    connections: connections.length
+                }
+            };
+        }
+
+        function parsePDTStructure(svgElement) {
+            const teams = [];
+            
+            // Extract team boxes
+            const teamRects = svgElement.querySelectorAll('rect[fill*="Grad"]');
+            teamRects.forEach((rect, index) => {
+                teams.push({
+                    id: `team-${index}`,
+                    type: 'team',
+                    position: { 
+                        x: parseFloat(rect.getAttribute('x')), 
+                        y: parseFloat(rect.getAttribute('y'))
+                    },
+                    dimensions: { 
+                        width: parseFloat(rect.getAttribute('width')), 
+                        height: parseFloat(rect.getAttribute('height'))
+                    },
+                    fill: rect.getAttribute('fill')
+                });
+            });
+
+            return {
+                type: 'pdt',
+                nodes: teams,
+                metadata: {
+                    title: 'Product Development Team Structure',
+                    exportedAt: new Date().toISOString(),
+                    teamCount: teams.length
+                }
+            };
+        }
+
+        function parsePDPMatrix(svgElement) {
+            const engagements = [];
+            
+            // Extract role engagement rectangles
+            const engagementRects = svgElement.querySelectorAll('rect[fill*="Grad"]');
+            engagementRects.forEach((rect, index) => {
+                const fill = rect.getAttribute('fill');
+                let engagementType = 'unknown';
+                
+                if (fill.includes('leadGrad')) engagementType = 'lead';
+                else if (fill.includes('supportGrad')) engagementType = 'support';
+                else if (fill.includes('consultGrad')) engagementType = 'consult';
+                else if (fill.includes('minimalGrad')) engagementType = 'minimal';
+                
+                engagements.push({
+                    id: `engagement-${index}`,
+                    type: 'engagement',
+                    level: engagementType,
+                    position: { 
+                        x: parseFloat(rect.getAttribute('x')), 
+                        y: parseFloat(rect.getAttribute('y'))
+                    },
+                    dimensions: { 
+                        width: parseFloat(rect.getAttribute('width')), 
+                        height: parseFloat(rect.getAttribute('height'))
+                    }
+                });
+            });
+
+            return {
+                type: 'pdp',
+                nodes: engagements,
+                phases: ['Discovery', 'Planning', 'Development', 'Launch', 'Growth', 'Optimization', 'Evolution'],
+                roles: ['Product Manager', 'Tech Lead', 'UX Designer', 'Developers', 'QA Engineer', 'Marketing', 'Sales', 'Data & Analytics', 'Infrastructure', 'Legal & Compliance', 'Finance'],
+                metadata: {
+                    title: 'Role Engagement Matrix',
+                    exportedAt: new Date().toISOString(),
+                    totalEngagements: engagements.length
+                }
+            };
+        }
+
+        function exportToJSON(diagramId) {
+            showStatus(diagramId, 'Parsing diagram structure...', 'info');
+            
+            try {
+                const flowData = parseSVGToUMLFlow(diagramId);
+                
+                if (!flowData) {
+                    showStatus(diagramId, 'Could not parse diagram data', 'error');
+                    return;
+                }
+                
+                // Create downloadable JSON
+                const jsonString = JSON.stringify(flowData, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${diagramId}-flow-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showStatus(diagramId, `Exported ${flowData.nodes?.length || 0} elements to JSON`, 'success');
+                
+            } catch (error) {
+                console.error('Export error:', error);
+                showStatus(diagramId, 'Error exporting to JSON', 'error');
+            }
+        }
+
+        // Dashboard Functions
+        function togglePhaseDashboard() {
+            const dashboard = document.getElementById('phase-dashboard');
+            dashboard.style.display = dashboard.style.display === 'block' ? 'none' : 'block';
+            if (dashboard.style.display === 'block') {
+                updatePhaseStatus();
+            }
+        }
+
+        function toggleLogDashboard() {
+            const dashboard = document.getElementById('log-dashboard');
+            dashboard.style.display = dashboard.style.display === 'block' ? 'none' : 'block';
+            if (dashboard.style.display === 'block') {
+                updateLogContent();
+            }
+        }
+
+        function updatePhaseStatus() {
+            if (!window.pdl) return;
+            
+            const currentPhase = window.pdl.currentPhase;
+            const phaseElements = document.querySelectorAll('.phase-status');
+            
+            phaseElements.forEach(element => {
+                const phase = element.dataset.phase;
+                element.classList.remove('active', 'completed');
+                
+                if (phase === currentPhase) {
+                    element.classList.add('active');
+                    element.querySelector('div').textContent = 'Status: Active';
+                }
+            });
+        }
+
+        function updateLogContent() {
+            if (!window.pdl) return;
+            
+            const logContent = document.getElementById('log-content');
+            const events = window.pdl.getEventHistory();
+            
+            // Clear existing logs except system message
+            logContent.innerHTML = '<div class="log-entry system"><strong>[System]</strong> PDL Framework initialized</div>';
+            
+            events.slice(-20).forEach(event => {
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry ${event.type}`;
+                logEntry.innerHTML = `
+                    <strong>[${event.timestamp.substr(11, 8)}]</strong> 
+                    <span style="color: #666;">[${event.agent}]</span>
+                    ${event.brief}
+                    ${event.references.length > 0 ? `<br><small>Refs: ${event.references.join(', ')}</small>` : ''}
+                `;
+                logContent.appendChild(logEntry);
+            });
+            
+            // Scroll to bottom
+            logContent.scrollTop = logContent.scrollHeight;
+        }
+
+        function filterLogs() {
+            const searchTerm = document.getElementById('log-search-input').value.toLowerCase();
+            const logEntries = document.querySelectorAll('.log-entry');
+            
+            logEntries.forEach(entry => {
+                const text = entry.textContent.toLowerCase();
+                entry.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        // Hook into PDL framework to update dashboards
+        function connectToPDLFramework() {
+            if (window.pdl) {
+                // Register hooks to update dashboards
+                window.pdl.registerHook('phase_transition', updatePhaseStatus);
+                window.pdl.registerHook('*', updateLogContent); // Listen to all events
+                
+                // Initialize current phase
+                updatePhaseStatus();
+                
+                // Demo some events for testing
+                setTimeout(() => {
+                    window.pdl.transitionPhase('discovery', 'planning', 'Research phase completed');
+                    window.pdl.assignAgent('researcher', 'LEAD', 'Market analysis');
+                    window.pdl.logDiscovery('Users prefer mobile-first design', 'user-survey-results.json');
+                }, 2000);
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('PDL Interactive Dashboard loaded');
+            
+            // Load all SVGs
+            loadSVG('pdl');
+            loadSVG('pdt');
+            loadSVG('pdp');
+            
+            // Connect to PDL framework after a short delay
+            setTimeout(connectToPDLFramework, 1000);
+        });
+    </script>
+</body>
+</html>
