@@ -1,4 +1,4 @@
-# PDL API Contracts & Data Schemas
+# PDL API Contracts & Data Schemas (Multi-Project)
 
 ## Core Data Types
 
@@ -10,6 +10,58 @@ type PhaseType = 'discovery' | 'planning' | 'development' | 'launch' | 'growth' 
 type TaskStatus = 'todo' | 'in_progress' | 'review' | 'blocked' | 'done';
 type Priority = 'low' | 'medium' | 'high' | 'critical';
 type AgentType = 'product_manager' | 'tech_lead' | 'developer' | 'designer' | 'qa_engineer' | 'devops' | 'analyst';
+type ProjectStatus = 'active' | 'paused' | 'completed' | 'archived';
+```
+
+### Project Management Schemas
+
+#### Project
+```typescript
+interface Project {
+  id: UUID;
+  name: string;
+  slug: string; // URL-friendly identifier
+  description?: string;
+  status: ProjectStatus;
+  createdBy: UUID;
+  createdAt: ISO8601DateTime;
+  updatedAt: ISO8601DateTime;
+  
+  // Configuration
+  config: ProjectConfig;
+  
+  // Metadata  
+  repositoryUrl?: string;
+  documentationUrl?: string;
+  tags: string[];
+  
+  // Current state
+  currentPhase?: PhaseType;
+  teamSize: number;
+  totalSprints: number;
+  activeSprints: number;
+}
+
+interface ProjectConfig {
+  sprintDuration: number; // days
+  workingHoursPerDay: number;
+  timeZone: string;
+  phaseGateRequired: boolean;
+  autoProgressPhases: boolean;
+  notificationSettings: NotificationConfig;
+  customPhases?: CustomPhase[];
+}
+
+interface ProjectMetrics {
+  totalTasks: number;
+  completedTasks: number;
+  totalStoryPoints: number;
+  completedStoryPoints: number;
+  averageVelocity: number;
+  phaseProgress: Record<PhaseType, number>;
+  teamEfficiency: number;
+  upcomingDeadlines: Deadline[];
+}
 ```
 
 ### Phase Management Schemas
@@ -18,6 +70,7 @@ type AgentType = 'product_manager' | 'tech_lead' | 'developer' | 'designer' | 'q
 ```typescript
 interface PDLPhase {
   id: UUID;
+  projectId: UUID; // **NEW: Project reference**
   name: PhaseType;
   displayName: string;
   description: string;
@@ -28,11 +81,11 @@ interface PDLPhase {
   progress: number; // 0-100
   gateApproved: boolean;
   gateReviewDate?: ISO8601DateTime;
-  gateReviewer?: string;
+  gateReviewer?: UUID; // **UPDATED: Agent ID reference**
   gateNotes?: string;
   milestones: Milestone[];
   metrics: PhaseMetrics;
-  dependencies: UUID[]; // Other phase IDs
+  dependencies: UUID[]; // Other phase IDs within same project
   deliverables: Deliverable[];
   risks: Risk[];
   createdAt: ISO8601DateTime;
@@ -107,36 +160,86 @@ interface ResourceChange {
 
 ### Agent Management Schemas
 
-#### AgentStatus
+#### Agent (Global Agent Profile)
 ```typescript
-interface AgentStatus {
+interface Agent {
   id: UUID;
   name: string;
   email: string;
   type: AgentType;
   specializations: string[];
-  currentPhase: PhaseType;
-  currentTasks: UUID[];
   status: 'available' | 'busy' | 'blocked' | 'offline' | 'on_leave';
-  workload: {
-    currentCapacity: number; // 0-100%
-    assignedStoryPoints: number;
-    completedStoryPoints: number;
-    averageVelocity: number;
-  };
-  performance: AgentPerformance;
+  
+  // Global availability settings
   availability: {
-    hoursPerWeek: number;
+    totalHoursPerWeek: number;
     timeZone: string;
     workingHours: {
       start: string; // "09:00"
       end: string;   // "17:00"
     };
   };
+  
+  performance: GlobalAgentPerformance;
   lastActive: ISO8601DateTime;
   metadata: Record<string, any>;
   createdAt: ISO8601DateTime;
   updatedAt: ISO8601DateTime;
+}
+
+#### ProjectAgent (Project-Specific Agent Assignment)
+```typescript
+interface ProjectAgent {
+  id: UUID;
+  projectId: UUID;
+  agentId: UUID;
+  role?: string; // Project-specific role
+  assignedDate: ISO8601DateTime;
+  unassignedDate?: ISO8601DateTime;
+  currentPhase?: PhaseType;
+  status: 'active' | 'inactive' | 'on_leave';
+  
+  // Project-specific capacity and workload
+  projectCapacityPercentage: number; // % of agent's total capacity allocated to this project
+  currentTasks: UUID[];
+  workload: {
+    assignedStoryPoints: number;
+    completedStoryPoints: number;
+    averageVelocity: number;
+    currentSprintCommitment: number;
+  };
+  
+  // Project-specific performance
+  projectPerformance: ProjectAgentPerformance;
+}
+
+#### AgentCapacityOverview (Cross-Project View)
+```typescript
+interface AgentCapacityOverview {
+  agentId: UUID;
+  agent: Agent;
+  totalCapacity: number;
+  allocatedCapacity: number;
+  availableCapacity: number;
+  
+  projectAllocations: Array<{
+    projectId: UUID;
+    projectName: string;
+    projectSlug: string;
+    capacityPercentage: number;
+    currentTasks: number;
+    currentPhase: PhaseType;
+    assignment: ProjectAgent;
+  }>;
+  
+  upcomingCommitments: Array<{
+    date: ISO8601DateTime;
+    projectId: UUID;
+    commitment: string;
+    estimatedHours: number;
+  }>;
+  
+  recommendations: AgentCapacityRecommendation[];
 }
 
 interface AgentPerformance {
@@ -372,21 +475,77 @@ type EventType =
   | 'test_passed' | 'test_failed' | 'code_review' | 'deployment' | 'rollback';
 ```
 
-## MCP Function Contracts
+## MCP Function Contracts (Multi-Project)
 
-### Phase Management Functions
+### Project Management Functions
 
 ```typescript
-// Get current phase information
-function mcp__pdl__get_current_phase(): Promise<{
+// Create new project
+function mcp__pdl__create_project(params: {
+  name: string;
+  slug: string;
+  description?: string;
+  createdBy: UUID;
+  config?: Partial<ProjectConfig>;
+  repositoryUrl?: string;
+  tags?: string[];
+}): Promise<Project>;
+
+// Get projects list
+function mcp__pdl__get_projects(params?: {
+  status?: ProjectStatus;
+  createdBy?: UUID;
+  tags?: string[];
+  search?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<{
+  projects: Project[];
+  totalCount: number;
+}>;
+
+// Get project details
+function mcp__pdl__get_project(params: {
+  projectId: UUID;
+}): Promise<{
+  project: Project;
+  currentPhase?: PDLPhase;
+  team: ProjectAgent[];
+  recentActivity: Event[];
+  metrics: ProjectMetrics;
+}>;
+
+// Update project
+function mcp__pdl__update_project(params: {
+  projectId: UUID;
+  updates: Partial<Pick<Project, 'name' | 'description' | 'status' | 'config' | 'tags'>>;
+  updatedBy: UUID;
+}): Promise<Project>;
+
+// Archive/delete project
+function mcp__pdl__archive_project(params: {
+  projectId: UUID;
+  archivedBy: UUID;
+  reason?: string;
+}): Promise<{ success: boolean }>;
+```
+
+### Phase Management Functions (Project-Scoped)
+
+```typescript
+// Get current phase information for a project
+function mcp__pdl__get_current_phase(params: {
+  projectId: UUID;
+}): Promise<{
   phase: PDLPhase;
   progress: PhaseMetrics;
   nextMilestones: Milestone[];
   blockers: TaskBlocker[];
 }>;
 
-// Transition between phases
+// Transition between phases within a project
 function mcp__pdl__transition_phase(params: {
+  projectId: UUID;
   fromPhase: PhaseType;
   toPhase: PhaseType;
   gateApproval?: boolean;
