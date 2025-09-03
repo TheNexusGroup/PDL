@@ -166,7 +166,7 @@
     <text x="1245" y="362" text-anchor="middle" font-size="10" font-weight="bold" fill="white">SUPPORT - Migration</text>
     
     <!-- Data & Analytics Row -->
-    <text x="80" y="395" font-weight="bold" text-anchor="end">Data & Analytics</text>
+    <text x="80" y="395" font-weight="bold" text-anchor="end">Data &amp; Analytics</text>
     <rect x="150" y="380" width="150" height="25" rx="3" fill="url(#leadGrad)"/>
     <text x="225" y="397" text-anchor="middle" font-size="10" font-weight="bold" fill="white">LEAD - User Research</text>
     <rect x="320" y="380" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
@@ -200,7 +200,7 @@
     <text x="1245" y="432" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Migration</text>
     
     <!-- Legal & Compliance Row -->
-    <text x="80" y="465" font-weight="bold" text-anchor="end">Legal & Compliance</text>
+    <text x="80" y="465" font-weight="bold" text-anchor="end">Legal &amp; Compliance</text>
     <rect x="150" y="450" width="150" height="25" rx="3" fill="url(#consultGrad)"/>
     <text x="225" y="467" text-anchor="middle" font-size="10" font-weight="bold" fill="white">CONSULT - Privacy</text>
     <rect x="320" y="450" width="150" height="25" rx="3" fill="url(#supportGrad)"/>
